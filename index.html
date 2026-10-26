@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سراج العلم | منصة تعليمية تفاعلية</title>
+
+<style>
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --primary: #4f46e5;
+  --primary-dark: #3730a3;
+  --secondary: #0f766e;
+  --text: #172033;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --success: #15803d;
+  --danger: #dc2626;
+  --radius: 20px;
+  --shadow: 0 10px 30px rgba(15, 23, 42, .08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.8;
+}
+
+button, input, select, textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+header {
+  background: linear-gradient(135deg, #312e81, #4f46e5, #0f766e);
+  color: white;
+  padding: 28px 18px;
+}
+
+.header-inner {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.logo {
+  width: 58px;
+  height: 58px;
+  display: grid;
+  place-items: center;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.3);
+  border-radius: 18px;
+  font-size: 30px;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: clamp(25px, 5vw, 38px);
+}
+
+.brand p {
+  margin: 3px 0 0;
+  opacity: .9;
+}
+
+.header-description {
+  margin-top: 24px;
+  max-width: 700px;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 16px;
+}
+
+.welcome {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  margin-bottom: 20px;
+}
+
+.welcome h2 {
+  margin-top: 0;
+  color: var(--primary-dark);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(145px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.stat {
+  background: #eef2ff;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  font-size: 25px;
+  color: var(--primary-dark);
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 8px 0 14px;
+  margin-bottom: 12px;
+}
+
+nav button {
+  flex: 0 0 auto;
+  padding: 11px 16px;
+  background: white;
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+nav button.active {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+.panel {
+  display: none;
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 22px;
+  box-shadow: var(--shadow);
+  margin-bottom: 22px;
+}
+
+.panel.active {
+  display: block;
+  animation: appear .25s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(7px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.panel h2 {
+  margin-top: 0;
+  color: var(--primary-dark);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.feature-card {
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  border-radius: 17px;
+  padding: 18px;
+}
+
+.feature-card .emoji {
+  font-size: 32px;
+}
+
+.feature-card h3 {
+  margin: 5px 0;
+}
+
+.feature-card p {
+  color: var(--muted);
+  margin-bottom: 0;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 12px 0 5px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 11px;
+  background: white;
+  color: var(--text);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.btn {
+  display: inline-block;
+  padding: 11px 17px;
+  border-radius: 11px;
+  background: var(--primary);
+  color: white;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  filter: brightness(.94);
+}
+
+.btn-secondary {
+  background: var(--secondary);
+}
+
+.btn-light {
+  background: #e0e7ff;
+  color: #312e81;
+}
+
+.btn-danger {
+  background: var(--danger);
+}
+
+.btn-success {
+  background: var(--success);
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.result {
+  padding: 14px;
+  border-radius: 12px;
+  background: #f1f5f9;
+  margin-top: 14px;
+}
+
+.result.good {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.result.bad {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 22px 0;
+}
+
+.wheel-wrap {
+  max-width: 380px;
+  margin: 18px auto;
+  text-align: center;
+}
+
+.wheel {
+  width: min(80vw, 320px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid white;
+  box-shadow: var(--shadow);
+  margin: 12px auto;
+  background: conic-gradient(
+    #f87171 0deg 60deg,
+    #fbbf24 60deg 120deg,
+    #34d399 120deg 180deg,
+    #60a5fa 180deg 240deg,
+    #a78bfa 240deg 300deg,
+    #fb7185 300deg 360deg
+  );
+  display: grid;
+  place-items: center;
+  transition: transform 3s cubic-bezier(.15,.7,.15,1);
+}
+
+.wheel-center {
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background: white;
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  box-shadow: 0 3px 12px #0002;
+}
+
+.question-option {
+  display: block;
+  width: 100%;
+  text-align: right;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 12px;
+  margin: 8px 0;
+}
+
+.question-option:hover {
+  background: #eef2ff;
+}
+
+.question-option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.team-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: 1px solid var(--border);
+  padding: 12px;
+  border-radius: 12px;
+  margin: 9px 0;
+}
+
+.team-points {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--primary);
+}
+
+footer {
+  text-align: center;
+  padding: 28px 16px;
+  color: var(--muted);
+}
+
+@media (max-width: 520px) {
+  .welcome, .panel {
+    padding: 16px;
+  }
+
+  .brand {
+    align-items: flex-start;
+  }
+
+  .logo {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <div class="logo">📚</div>
+      <div>
+        <h1>سراج العلم</h1>
+        <p>نتعلّم، نتحدّى، ونبدع!</p>
+      </div>
+    </div>
+
+    <div class="header-description">
+      <h2>رحلتك نحو المعرفة تبدأ هنا</h2>
+      <p>
+        منصة تعليمية تفاعلية تجمع الاختبارات والألعاب
+        والتحديات في مكان واحد.
+      </p>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="welcome">
+    <h2>مرحبًا بك في سراج العلم ✨</h2>
+    <p>
+      اختبر معلوماتك، أضف أسئلتك، اختر اسمًا عشوائيًا،
+      وتنافس مع زملائك بطريقة ممتعة.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <strong id="totalQuestions">0</strong>
+        <span>سؤال متاح</span>
+      </div>
+
+      <div class="stat">
+        <strong id="totalTeams">0</strong>
+        <span>فريق مسجّل</span>
+      </div>
+
+      <div class="stat">
+        <strong id="totalPoints">0</strong>
+        <span>نقطة مكتسبة</span>
+      </div>
+    </div>
+  </section>
+
+  <nav aria-label="أقسام الموقع">
+    <button class="active" data-tab="home">🏠 الرئيسية</button>
+    <button data-tab="wheel">🎡 عجلة الأسماء</button>
+    <button data-tab="quiz">🧠 الاختبارات</button>
+    <button data-tab="create">✍️ أضف سؤالًا</button>
+    <button data-tab="teams">🏆 المنافسة</button>
+    <button data-tab="challenge">⚡ التحدي</button>
+  </nav>
+
+  <section class="panel active" id="home">
+    <h2>اكتشف أقسام المنصة</h2>
+
+    <div class="grid">
+      <div class="feature-card">
+        <div class="emoji">🎡</div>
+        <h3>عجلة الأسماء</h3>
+        <p>اختر اسمًا عشوائيًا للمشاركة في النشاط.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="emoji">🧠</div>
+        <h3>اختبر معلوماتك</h3>
+        <p>أسئلة في مواد متنوعة ومستويات مختلفة.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="emoji">🏆</div>
+        <h3>نافس زملاءك</h3>
+        <p>أنشئ فرقًا وأضف النقاط لمتابعة النتائج.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="emoji">✍️</div>
+        <h3>اصنع أسئلتك</h3>
+        <p>أضف أسئلة جديدة لتوسيع بنك الأسئلة.</p>
+      </div>
+    </div>
+  </section>
+    <!-- عجلة الأسماء -->
+  <section class="panel" id="wheel">
+    <h2>🎡 عجلة الأسماء</h2>
+    <p>اكتب أسماء المشاركين، كل اسم في سطر، ثم أدر العجلة.</p>
+
+    <label for="namesInput">أسماء المشاركين</label>
+    <textarea id="namesInput" placeholder="أحمد&#10;سارة&#10;محمد&#10;مريم">أحمد
+سارة
+محمد
+مريم</textarea>
+
+    <div class="wheel-wrap">
+      <div class="wheel" id="wheelGraphic">
+        <div class="wheel-center">⭐</div>
+      </div>
+      <button class="btn" id="spinBtn">أدر العجلة 🎡</button>
+      <div class="result" id="wheelResult">الاسم المختار سيظهر هنا.</div>
+    </div>
+  </section>
+
+  <!-- الاختبارات -->
+  <section class="panel" id="quiz">
+    <h2>🧠 الاختبارات التعليمية</h2>
+
+    <div class="grid">
+      <div>
+        <label for="categoryFilter">المادة</label>
+        <select id="categoryFilter">
+          <option value="الكل">جميع المواد</option>
+          <option value="اللغة العربية">اللغة العربية</option>
+          <option value="الرياضيات">الرياضيات</option>
+          <option value="العلوم">العلوم</option>
+        </select>
+      </div>
+
+      <div>
+        <label for="difficultyFilter">المستوى</label>
+        <select id="difficultyFilter">
+          <option value="الكل">جميع المستويات</option>
+          <option value="سهل">سهل</option>
+          <option value="متوسط">متوسط</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="quizArea" class="result">
+      اضغط «ابدأ الاختبار» للبدء.
+    </div>
+
+    <div class="button-row">
+      <button class="btn" id="startQuizBtn">ابدأ الاختبار</button>
+      <button class="btn btn-light" id="nextQuestionBtn" hidden>السؤال التالي</button>
+    </div>
+
+    <p id="quizProgress" class="muted"></p>
+    <p id="quizScore"></p>
+  </section>
+
+  <!-- إضافة الأسئلة -->
+  <section class="panel" id="create">
+    <h2>✍️ إنشاء سؤال جديد</h2>
+    <p class="muted">أضف سؤال اختيار من متعدد، وسيُحفظ في هذا المتصفح.</p>
+
+    <form id="questionForm">
+      <label for="newCategory">المادة</label>
+      <select id="newCategory" required>
+        <option value="اللغة العربية">اللغة العربية</option>
+        <option value="الرياضيات">الرياضيات</option>
+        <option value="العلوم">العلوم</option>
+        <option value="معلومات عامة">معلومات عامة</option>
+      </select>
+
+      <label for="newDifficulty">المستوى</label>
+      <select id="newDifficulty" required>
+        <option value="سهل">سهل</option>
+        <option value="متوسط">متوسط</option>
+      </select>
+
+      <label for="newQuestion">نص السؤال</label>
+      <textarea id="newQuestion" required placeholder="اكتب السؤال هنا"></textarea>
+
+      <label for="option1">الخيار الأول</label>
+      <input id="option1" required>
+
+      <label for="option2">الخيار الثاني</label>
+      <input id="option2" required>
+
+      <label for="option3">الخيار الثالث</label>
+      <input id="option3" required>
+
+      <label for="option4">الخيار الرابع</label>
+      <input id="option4" required>
+
+      <label for="correctOption">الإجابة الصحيحة</label>
+      <select id="correctOption" required>
+        <option value="0">الخيار الأول</option>
+        <option value="1">الخيار الثاني</option>
+        <option value="2">الخيار الثالث</option>
+        <option value="3">الخيار الرابع</option>
+      </select>
+
+      <label for="explanation">شرح الإجابة (اختياري)</label>
+      <input id="explanation" placeholder="لماذا هذه الإجابة صحيحة؟">
+
+      <button class="btn" type="submit">حفظ السؤال</button>
+    </form>
+
+    <div id="createMessage" class="result" hidden></div>
+  </section>
+
+  <!-- المنافسة -->
+  <section class="panel" id="teams">
+    <h2>🏆 منافسة الفرق</h2>
+
+    <form id="teamForm">
+      <label for="teamName">اسم الفريق الجديد</label>
+      <input id="teamName" required placeholder="مثال: فريق النجوم">
+      <button class="btn btn-secondary" type="submit">إضافة الفريق</button>
+    </form>
+
+    <hr class="divider">
+
+    <h3>لوحة النتائج</h3>
+    <div id="teamList"></div>
+
+    <button class="btn btn-danger" id="resetTeamsBtn">
+      تصفير النقاط
+    </button>
+  </section>
+
+  <!-- التحدي -->
+  <section class="panel" id="challenge">
+    <h2>⚡ تحدي المعرفة</h2>
+    <p>اضغط الزر للحصول على تحدٍ عشوائي.</p>
+
+    <div class="feature-card">
+      <div class="emoji">🎯</div>
+      <h3 id="challengeTitle">هل أنت مستعد؟</h3>
+      <p id="challengeText">استعد لتحدٍّ جديد.</p>
+    </div>
+
+    <button class="btn" id="newChallengeBtn">تحدٍّ جديد</button>
+  </section>
+
+</main>
+
+<footer>
+  <p>سراج العلم © <span id="currentYear"></span></p>
+  <p>نتعلّم معًا، ونرتقي بالمعرفة.</p>
+</footer>
+<script>
+"use strict";
+
+const $ = id => document.getElementById(id);
+
+const storage = {
+  get(key, fallback) {
+    try {
+      const value = localStorage.getItem(key);
+      return value === null ? fallback : JSON.parse(value);
+    } catch {
+      return fallback;
+    }
+  },
+  set(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+      console.warn("تعذر حفظ البيانات في المتصفح.");
+    }
+  }
+};
+
+let questions = storage.get("siraj_questions", [
+  {
+    category: "اللغة العربية",
+    difficulty: "سهل",
+    question: "ما جمع كلمة كتاب؟",
+    options: ["كاتب", "مكتبات", "كتب", "كتابة"],
+    correct: 2,
+    explanation: "جمع كتاب هو كتب."
+  },
+  {
+    category: "اللغة العربية",
+    difficulty: "متوسط",
+    question: "ما نوع كلمة «يكتب»؟",
+    options: ["اسم", "فعل مضارع", "فعل ماضٍ", "حرف"],
+    correct: 1,
+    explanation: "يكتب فعل مضارع."
+  },
+  {
+    category: "الرياضيات",
+    difficulty: "سهل",
+    question: "ما ناتج 7 × 8؟",
+    options: ["54", "56", "64", "48"],
+    correct: 1,
+    explanation: "سبعة مضروبة في ثمانية تساوي 56."
+  },
+  {
+    category: "الرياضيات",
+    difficulty: "متوسط",
+    question: "ما ناتج 144 ÷ 12؟",
+    options: ["10", "11", "12", "14"],
+    correct: 2,
+    explanation: "لأن 12 × 12 = 144."
+  },
+  {
+    category: "العلوم",
+    difficulty: "سهل",
+    question: "أي عضو يضخ الدم في جسم الإنسان؟",
+    options: ["الرئة", "القلب", "المعدة", "الدماغ"],
+    correct: 1,
+    explanation: "القلب يضخ الدم إلى أجزاء الجسم."
+  },
+  {
+    category: "العلوم",
+    difficulty: "متوسط",
+    question: "ما الغاز الذي تمتصه النباتات من الهواء؟",
+    options: ["الأكسجين", "النيتروجين", "ثاني أكسيد الكربون", "الهيدروجين"],
+    correct: 2,
+    explanation: "تمتص النباتات ثاني أكسيد الكربون في البناء الضوئي."
+  }
+]);
+
+let teams = storage.get("siraj_teams", []);
+let earnedPoints = storage.get("siraj_points", 0);
+
+let quizQuestions = [];
+let quizIndex = 0;
+let quizCorrect = 0;
+let answered = false;
+let wheelRotation = 0;
+
+function saveQuestions() {
+  storage.set("siraj_questions", questions);
+}
+
+function saveTeams() {
+  storage.set("siraj_teams", teams);
+}
+
+function updateStats() {
+  $("totalQuestions").textContent = questions.length;
+  $("totalTeams").textContent = teams.length;
+  $("totalPoints").textContent = earnedPoints;
+  $("currentYear").textContent = new Date().getFullYear();
+}
+
+function playSound(frequency = 650) {
+  try {
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    if (!AudioContextClass) return;
+
+    const context = new AudioContextClass();
+    const oscillator = context.createOscillator();
+    const gain = context.createGain();
+
+    oscillator.frequency.value = frequency;
+    gain.gain.value = 0.06;
+
+    oscillator.connect(gain);
+    gain.connect(context.destination);
+
+    oscillator.start();
+    oscillator.stop(context.currentTime + 0.12);
+    oscillator.onended = () => context.close();
+  } catch (error) {
+    console.log("الصوت غير متاح في هذا المتصفح.");
+  }
+}
+
+/* التنقل بين أقسام الموقع */
+document.querySelectorAll("nav button").forEach(button => {
+  button.addEventListener("click", () => {
+    document.querySelectorAll("nav button").forEach(item => {
+      item.classList.remove("active");
+    });
+
+    document.querySelectorAll(".panel").forEach(panel => {
+      panel.classList.remove("active");
+    });
+
+    button.classList.add("active");
+    $(button.dataset.tab).classList.add("active");
+  });
+});
+
+/* عجلة الأسماء */
+$("spinBtn").addEventListener("click", () => {
+  const names = $("namesInput").value
+    .split(/\n/)
+    .map(name => name.trim())
+    .filter(Boolean);
+
+  if (!names.length) {
+    $("wheelResult").textContent = "اكتب اسمًا واحدًا على الأقل أولًا.";
+    return;
+  }
+
+  const chosenIndex = Math.floor(Math.random() * names.length);
+  const chosenName = names[chosenIndex];
+
+  wheelRotation += 1800 + Math.random() * 720;
+
+  $("wheelGraphic").style.transform =
+    `rotate(${wheelRotation}deg)`;
+
+  $("spinBtn").disabled = true;
+  $("wheelResult").textContent = "تدور العجلة...";
+
+  setTimeout(() => {
+    $("wheelResult").textContent =
+      "🎉 الاسم المختار: " + chosenName;
+
+    $("spinBtn").disabled = false;
+    playSound();
+  }, 3000);
+});
+
+/* تجهيز الأسئلة حسب المادة والمستوى */
+function getFilteredQuestions() {
+  const category = $("categoryFilter").value;
+  const difficulty = $("difficultyFilter").value;
+
+  return questions.filter(question => {
+    const categoryMatches =
+      category === "الكل" || question.category === category;
+
+    const difficultyMatches =
+      difficulty === "الكل" || question.difficulty === difficulty;
+
+    return categoryMatches && difficultyMatches;
+  });
+}
+
+/* بدء الاختبار */
+$("startQuizBtn").addEventListener("click", () => {
+  quizQuestions = getFilteredQuestions();
+
+  if (!quizQuestions.length) {
+    $("quizArea").textContent =
+      "لا توجد أسئلة بهذا الاختيار. جرّب مادة أو مستوى آخر.";
+    $("quizProgress").textContent = "";
+    $("quizScore").textContent = "";
+    $("nextQuestionBtn").hidden = true;
+    return;
+  }
+
+  quizQuestions = [...quizQuestions]
+    .sort(() => Math.random() - 0.5);
+
+  quizIndex = 0;
+  quizCorrect = 0;
+
+  $("quizScore").textContent = "";
+  showQuestion();
+});
+
+function showQuestion() {
+  answered = false;
+
+  const question = quizQuestions[quizIndex];
+
+  $("quizArea").innerHTML = "";
+
+  const heading = document.createElement("h3");
+  heading.textContent =
+    `${quizIndex + 1}. ${question.question}`;
+
+  $("quizArea").appendChild(heading);
+
+  question.options.forEach((option, index) => {
+    const button = document.createElement("button");
+
+    button.className = "question-option";
+    button.textContent =
+      `${index + 1}. ${option}`;
+
+    button.addEventListener("click", () => {
+      answerQuestion(index);
+    });
+
+    $("quizArea").appendChild(button);
+  });
+
+  $("quizProgress").textContent =
+    `السؤال ${quizIndex + 1} من ${quizQuestions.length}`;
+
+  $("nextQuestionBtn").hidden = true;
+}
+
+function answerQuestion(selectedIndex) {
+  if (answered) return;
+  answered = true;
+
+  const question = quizQuestions[quizIndex];
+  const buttons =
+    $("quizArea").querySelectorAll(".question-option");
+
+  buttons.forEach((button, index) => {
+    button.disabled = true;
+
+    if (index === question.correct) {
+      button.style.background = "#dcfce7";
+      button.style.borderColor = "#16a34a";
+    } else if (index === selectedIndex) {
+      button.style.background = "#fee2e2";
+      button.style.borderColor = "#dc2626";
+    }
+  });
+
+  const feedback = document.createElement("div");
+  feedback.className = "result";
+
+  if (selectedIndex === question.correct) {
+    quizCorrect++;
+    earnedPoints += 1;
+    storage.set("siraj_points", earnedPoints);
+
+    feedback.classList.add("good");
+    feedback.textContent = "إجابة صحيحة! أحسنت 👏";
+    playSound(800);
+  } else {
+    feedback.classList.add("bad");
+    feedback.textContent =
+      "ليست الإجابة الصحيحة. الإجابة: " +
+      question.options[question.correct];
+  }
+
+  if (question.explanation) {
+    const explanation = document.createElement("p");
+    explanation.textContent = question.explanation;
+    feedback.appendChild(explanation);
+  }
+
+  $("quizArea").appendChild(feedback);
+  $("nextQuestionBtn").hidden = false;
+
+  updateStats();
+}
+
+$("nextQuestionBtn").addEventListener("click", () => {
+  if (quizIndex < quizQuestions.length - 1) {
+    quizIndex++;
+    showQuestion();
+  } else {
+    $("quizArea").textContent = "انتهى الاختبار! 🎉";
+
+    $("quizScore").textContent =
+      `نتيجتك: ${quizCorrect} من ${quizQuestions.length}`;
+
+    $("quizProgress").textContent =
+      "يمكنك بدء اختبار جديد متى شئت.";
+
+    $("nextQuestionBtn").hidden = true;
+  }
+});
+
+/* إضافة سؤال جديد */
+$("questionForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const newQuestion = {
+    category: $("newCategory").value,
+    difficulty: $("newDifficulty").value,
+    question: $("newQuestion").value.trim(),
+    options: [
+      $("option1").value.trim(),
+      $("option2").value.trim(),
+      $("option3").value.trim(),
+      $("option4").value.trim()
+    ],
+    correct: Number($("correctOption").value),
+    explanation: $("explanation").value.trim()
+  };
+
+  if (
+    !newQuestion.question ||
+    newQuestion.options.some(option => !option)
+  ) {
+    return;
+  }
+
+  questions.push(newQuestion);
+  saveQuestions();
+
+  $("createMessage").hidden = false;
+  $("createMessage").className = "result good";
+  $("createMessage").textContent =
+    "تم حفظ السؤال بنجاح! يمكنك استخدامه في الاختبارات.";
+
+  $("questionForm").reset();
+  updateStats();
+});
+
+/* إضافة الفرق وعرض النتائج */
+$("teamForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const name = $("teamName").value.trim();
+
+  if (!name) return;
+
+  const duplicate = teams.some(
+    team => team.name.toLowerCase() === name.toLowerCase()
+  );
+
+  if (duplicate) {
+    alert("هذا الفريق موجود بالفعل.");
+    return;
+  }
+
+  teams.push({
+    id: Date.now(),
+    name,
+    points: 0
+  });
+
+  saveTeams();
+  $("teamName").value = "";
+
+  renderTeams();
+  updateStats();
+});
+
+function renderTeams() {
+  const list = $("teamList");
+  list.innerHTML = "";
+
+  if (!teams.length) {
+    list.textContent = "لم تتم إضافة أي فريق حتى الآن.";
+    updateStats();
+    return;
+  }
+
+  const sortedTeams = [...teams].sort(
+    (a, b) => b.points - a.points
+  );
+
+  sortedTeams.forEach((team, index) => {
+    const row = document.createElement("div");
+    row.className = "team-row";
+
+    const info = document.createElement("div");
+    const title = document.createElement("strong");
+
+    title.textContent =
+      `${index + 1}. ${team.name}`;
+
+    const score = document.createElement("div");
+    score.className = "team-points";
+    score.textContent = `${team.points} نقطة`;
+
+    info.append(title, score);
+
+    const actions = document.createElement("div");
+    actions.className = "button-row";
+
+    const plus = document.createElement("button");
+    plus.className = "btn btn-success";
+    plus.textContent = "+ نقطة";
+
+    plus.addEventListener("click", () => {
+      team.points++;
+      saveTeams();
+      renderTeams();
+    });
+
+    const minus = document.createElement("button");
+    minus.className = "btn btn-light";
+    minus.textContent = "− نقطة";
+
+    minus.addEventListener("click", () => {
+      team.points = Math.max(0, team.points - 1);
+      saveTeams();
+      renderTeams();
+    });
+
+    actions.append(plus, minus);
+    row.append(info, actions);
+    list.appendChild(row);
+  });
+
+  updateStats();
+}
+
+$("resetTeamsBtn").addEventListener("click", () => {
+  if (!teams.length) return;
+
+  if (confirm("هل تريد تصفير نقاط جميع الفرق؟")) {
+    teams.forEach(team => {
+      team.points = 0;
+    });
+
+    saveTeams();
+    renderTeams();
+  }
+});
+
+/* التحديات العشوائية */
+const challenges = [
+  {
+    title: "تحدي المفردات",
+    text: "اذكر ثلاث كلمات عربية تبدأ بالحرف الذي يختاره المعلم."
+  },
+  {
+    title: "تحدي الحساب",
+    text: "أجب عن مسألة حسابية ذهنيًا خلال 20 ثانية."
+  },
+  {
+    title: "تحدي العلوم",
+    text: "اذكر حقيقة علمية جديدة تعلّمتها."
+  },
+  {
+    title: "تحدي الذاكرة",
+    text: "استمع إلى خمس كلمات، ثم حاول تذكّرها بالترتيب."
+  },
+  {
+    title: "تحدي العمل الجماعي",
+    text: "تعاون مع فريقك لحل لغز تعليمي في دقيقة واحدة."
+  },
+  {
+    title: "تحدي اللغة العربية",
+    text: "كوّن جملة مفيدة تحتوي على اسم وفعل وحرف."
+  }
+];
+
+$("newChallengeBtn").addEventListener("click", () => {
+  const challenge =
+    challenges[Math.floor(Math.random() * challenges.length)];
+
+  $("challengeTitle").textContent = challenge.title;
+  $("challengeText").textContent = challenge.text;
+
+  playSound(600);
+});
+
+/* تجهيز الموقع عند فتحه */
+updateStats();
+renderTeams();
+</script>
+
+</body>
+</html>
